@@ -4,7 +4,7 @@ Write-Host ' reflect Azure Devops repo changes to GitHub repo'
 Write-Host ' - - - - - - - - - - - - - - - - - - - - - - - - - '
 $stageDir = pwd | split-path
 $githubDir = $stageDir +"\"+"gitHub"
-$destination = $githubDir +"\"+"test.git"
+$destination = $githubDir +"\"+"temp_folder"
 #please provide your username
 $alias = '<userName>:'+ ${env:Github.PAT}
 #Please make sure, you remove https from azure-repo-clone-url
