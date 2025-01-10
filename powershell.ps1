@@ -31,6 +31,7 @@ Write-Output '*****Git removing remote secondary****'
 git remote rm secondary
 Write-Output '*****Git remote add****'
 git remote add --mirror=fetch secondary $destURL
+git remote prune $sourceUrl
 Write-Output '*****Git fetch origin****'
 git fetch $sourceURL
 Write-Output '*****Git push secondary****'
