@@ -6,9 +6,9 @@ $stageDir = pwd | split-path
 $githubDir = $stageDir +"\"+"gitHub"
 $destination = $githubDir +"\"+"temp_folder"
 #please provide your username
-$alias = '<userName>:'+ ${env:Github.PAT}
+$alias = '<userName>:'+ ${env:GITHUB_PAT}
 #Please make sure, you remove https from azure-repo-clone-url
-$sourceURL = ("https://{0}@dev.azure.com/juangarridocaballero/test/_git/test" -f ${env:AzureDevOps.PAT})
+$sourceURL = ("https://{0}@dev.azure.com/juangarridocaballero/test/_git/test" -f ${env:AZUREDEVOPS_PAT})
 #Please make sure, you remove https from github-repo-clone-url
 $destURL = 'https://' + $alias + '@silverhack/azuredevopstest.git'
 #Check if the parent directory exists and delete
