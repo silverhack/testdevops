@@ -2,7 +2,7 @@
 Write-Host ' - - - - - - - - - - - - - - - - - - - - - - - - -'
 Write-Host ' reflect Azure Devops repo changes to GitHub repo'
 Write-Host ' - - - - - - - - - - - - - - - - - - - - - - - - - '
-$stageDir = '$(Build.SourcesDirectory)' | Split-Path
+$stageDir = '$(Build.SourcesDirectory)'
 $githubDir = $stageDir +"\"+"gitHub"
 $destination = $githubDir +"\"+"test.git"
 #please provide your username
