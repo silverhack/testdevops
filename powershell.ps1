@@ -27,6 +27,7 @@ else
   Write-Host "The given folder path $githubDir already exists";
 }
 Set-Location $destination
+git config --unset core.bare
 Write-Output '*****Git removing remote secondary****'
 git remote rm secondary
 Write-Output '*****Git remote add****'
