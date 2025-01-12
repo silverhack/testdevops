@@ -37,7 +37,7 @@ git remote prune $sourceUrl
 Write-Output '*****Git fetch origin****'
 git fetch $sourceURL
 Write-Output '*****Git push secondary****'
-git push secondary --all
+git push secondary --all -f
 Write-Output '**Azure Devops repo synced with Github repo**'
 Set-Location $stageDir
 if((Test-Path -path $githubDir))
