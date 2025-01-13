@@ -25,9 +25,12 @@ jobs:
           release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
+      # Create a zip of the folder
+      - name: Create ZIP file of the folder
+        run: git archive --format zip --output assets.zip main
       - name: Upload release binaries
-        uses: alexellis/upload-assets@0.2.2
+        uses: alexellis/upload-assets@0.4.1
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
-          asset_paths: '["/*"]'
+          asset_paths: '["./assets.zip"]'
