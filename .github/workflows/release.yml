@@ -33,7 +33,7 @@ jobs:
           prerelease: false
       # Create a zip of the folder
       - name: Create ZIP file of the folder
-        run: git archive --format zip --output build/assets.zip main
+        run: git archive --format zip --output /build/assets.zip main
       - name: Upload release binaries
         uses: alexellis/upload-assets@0.4.1
         env:
