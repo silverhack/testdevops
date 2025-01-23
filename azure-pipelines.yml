@@ -18,4 +18,3 @@ steps:
     filePath: 'powershell.ps1'
   env:
     token: $(System.AccessToken)
-    pat: $(Github)
