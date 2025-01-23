@@ -21,7 +21,7 @@ if(!(Test-Path -path $githubDir))
   New-Item -ItemType directory -Path $githubDir
   Set-Location $githubDir
   #git clone --mirror $sourceURL
-  git clone --mirror -c http.extraheader="Authorization: Bearer ${env:token}" $sourceURL
+  git clone --mirror -c http.extraheader="Authorization: Bearer ${env:AZUREDEVOPS}" $sourceURL
 }
 else
 {
