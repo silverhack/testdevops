@@ -6,7 +6,7 @@ $stageDir = pwd | split-path
 $githubDir = $stageDir +"\"+"gitHub"
 $destination = $githubDir +"\"+"test.git"
 #please provide your username
-$alias = ${env:Github}
+$alias = ${env:GITHUB}
 #Please make sure, you remove https from azure-repo-clone-url
 $sourceURL = "https://dev.azure.com/juangarridocaballero/test2/_git/test"
 #Please make sure, you remove https from github-repo-clone-url
