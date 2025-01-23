@@ -10,7 +10,7 @@ $alias = ${env:GITHUB}
 #Please make sure, you remove https from azure-repo-clone-url
 $sourceURL = ("https://dev.azure.com/juangarridocaballero/test2/_git/test")
 #Please make sure, you remove https from github-repo-clone-url
-$destURL = 'https://' + $alias + '@github.com/silverhack/testdevops.git'
+$destURL = 'https://github.com/silverhack/testdevops.git'
 #Check if the parent directory exists and delete
 if((Test-Path -path $githubDir))
 {
@@ -38,7 +38,7 @@ git remote prune $sourceUrl
 Write-Output '*****Git fetch origin****'
 git fetch $sourceURL
 Write-Output '*****Git push secondary****'
-git push secondary --all -f
+git -c http.extraheader="Authorization: Bearer ${env:github}" push secondary --all -f
 Write-Output '**Azure Devops repo synced with Github repo**'
 Set-Location $stageDir
 if((Test-Path -path $githubDir))
