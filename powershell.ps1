@@ -8,7 +8,7 @@ $destination = $githubDir +"\"+"test.git"
 #please provide your username
 $alias = ${env:GITHUB}
 #Please make sure, you remove https from azure-repo-clone-url
-$sourceURL = ("https://{0}@dev.azure.com/juangarridocaballero/test2/_git/test" -f ${env:TOKEN})
+$sourceURL = ("https://{0}@dev.azure.com/juangarridocaballero/test/_git/test" -f ${env:AZUREDEVOPS_PAT})
 #Please make sure, you remove https from github-repo-clone-url
 $destURL = 'https://' + $alias + '@github.com/silverhack/testdevops.git'
 #Check if the parent directory exists and delete
