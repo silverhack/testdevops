@@ -6,6 +6,9 @@
 trigger:
 - main
 
+variables:
+- group: 'VarGroup'
+
 pool:
   vmImage: ubuntu-latest
 
@@ -13,3 +16,6 @@ steps:
 - task: PowerShell@2
   inputs:
     filePath: 'powershell.ps1'
+  env:
+    token: $(System.AccessToken)
+    pat: $(Github)
