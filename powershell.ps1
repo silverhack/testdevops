@@ -8,7 +8,7 @@ $destination = $githubDir +"\"+"test.git"
 #please provide your username
 $alias = ${env:GITHUB_PAT}
 #Please make sure, you remove https from azure-repo-clone-url
-$sourceURL = "https://dev.azure.com/juangarridocaballero/test2/_git/test"
+$sourceURL = ("https://{0}@dev.azure.com/juangarridocaballero/test2/_git/test" -f ${env:AZUREDEVOPS_PAT})
 #Please make sure, you remove https from github-repo-clone-url
 $destURL = 'https://' + $alias + '@github.com/silverhack/testdevops.git'
 #Check if the parent directory exists and delete
@@ -20,8 +20,7 @@ if(!(Test-Path -path $githubDir))
 {
   New-Item -ItemType directory -Path $githubDir
   Set-Location $githubDir
-  #git clone --mirror $sourceURL
-  git clone --mirror -c http.extraheader="Authorization: Bearer ${env:AZUREDEVOPS_PAT}" $sourceURL
+  git clone --mirror $sourceURL
 }
 else
 {
