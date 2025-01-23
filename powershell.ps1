@@ -6,7 +6,7 @@ $stageDir = pwd | split-path
 $githubDir = $stageDir +"\"+"gitHub"
 $destination = $githubDir +"\"+"test.git"
 #please provide your username
-$alias = ${env:GITHUB}
+$alias = ${env:GITHUB_PAT}
 #Please make sure, you remove https from azure-repo-clone-url
 $sourceURL = "https://dev.azure.com/juangarridocaballero/test2/_git/test"
 #Please make sure, you remove https from github-repo-clone-url
@@ -21,7 +21,7 @@ if(!(Test-Path -path $githubDir))
   New-Item -ItemType directory -Path $githubDir
   Set-Location $githubDir
   #git clone --mirror $sourceURL
-  git clone --mirror -c http.extraheader="Authorization: Bearer ${env:AZUREDEVOPS}" $sourceURL
+  git clone --mirror -c http.extraheader="Authorization: Bearer ${env:AZUREDEVOPS_PAT}" $sourceURL
 }
 else
 {

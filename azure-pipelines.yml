@@ -6,9 +6,6 @@
 trigger:
 - main
 
-variables:
-- group: 'VarGroup'
-
 pool:
   vmImage: ubuntu-latest
 
