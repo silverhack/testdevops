@@ -32,10 +32,11 @@ stages:
               write-host "cloned!!!"
               Set-Location ${env:dest}
               # Set your personal GitHub repo as the push destination
-              git remote set-url --push origin $newOrigin
+              git remote add --mirror=fetch secondary $newOrigin
+              git remote set-url --push secondary $newOrigin
               # To update the mirror in the future
               git remote -v
-              git fetch origin
+              git fetch secondary
               git push --mirror
           env:
             token: $(System.AccessToken)
