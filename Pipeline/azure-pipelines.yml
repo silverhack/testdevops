@@ -38,7 +38,7 @@ stages:
               write-host "Fetchhhh!!!"
               git fetch origin
               write-host "Pushhhhh!!!"
-              #git push secondary --all -f
+              git push secondary --all -f
           env:
             token: $(System.AccessToken)
             pat: $(GitHubPat)
