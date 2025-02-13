@@ -1,23 +1,47 @@
+# specific branch build with batching
+trigger:
+  batch: true
+  branches:
+    include:
+    - main
+
 variables:
 - group: 'VarGroup'
-- name: 'github-organisation'
-  value: 'silverhack'
-- name: 'github-repository'
-  value: 'azuredevopstest'
-
-trigger:
-- main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: windows-latest
 
 stages:
-- stage: 'GitPush'
+- stage: GitHub
+  displayName: Update GitHub repo
   jobs:
-    - job: GitPush
+    - job: GitHub
       steps:
-        - checkout: self
-        - script: git push https://${env:githubtoken}@github.com/$(github-organisation)/$(github-repository).git HEAD:refs/heads/main
-          displayName: 'Git push to remote repository'
+        - task: PowerShell@2
+          displayName: Update GitHub repo
+          inputs:
+            targetType: 'inline'
+            script: |
+              write-host $(Pipeline.Workspace)
+              write-host ${env:source}
+              #set GitHub url 
+              $newOrigin = ('https://{0}@{1}' -f ${env:pat},${env:desturl})
+              # Clone the original repository as a bare mirror
+              git clone --mirror -c http.extraheader="Authorization: Bearer ${env:token}" ${env:source} ${env:dest}
+              # Navigate to the bare clone directory
+              write-host "cloned!!!"
+              Set-Location ${env:dest}
+              # Set your personal GitHub repo as the push destination
+              git remote set-url --push origin $newOrigin
+              # To update the mirror in the future
+              git remote -v
+              git fetch origin
+              git push --mirror
           env:
-            githubtoken: $(githubpat)
+            token: $(System.AccessToken)
+            pat: $(GitHubPat)
+            username: $(Build.RequestedFor)
+            email: $(Build.RequestedForEmail)
+            source: $(Build.Repository.Uri)
+            dest: newfolder
+            desturl: github.com/silverhack/testdevops.git
