@@ -36,8 +36,10 @@ stages:
               git remote set-url --push secondary $newOrigin
               # To update the mirror in the future
               git remote -v
-              git fetch secondary
-              git push --mirror
+              write-host "Fetchhhh!!!"
+              git fetch origin
+              write-host "Pushhhhh!!!"
+              git push secondary --all -f
           env:
             token: $(System.AccessToken)
             pat: $(GitHubPat)
