@@ -13,6 +13,8 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- checkout: self
+  persistCredentials: true
 - task: PowerShell@2
   inputs:
     filePath: 'powershell.ps1'
