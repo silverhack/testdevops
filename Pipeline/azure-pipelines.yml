@@ -32,7 +32,7 @@ stages:
               write-host "cloned!!!"
               Set-Location ${env:dest}
               # Set your personal GitHub repo as the push destination
-              git remote set-url --push secondary $newOrigin
+              git remote add --mirror=fetch secondary $newOrigin
               # To update the mirror in the future
               git remote -v
               write-host "Fetchhhh!!!"
