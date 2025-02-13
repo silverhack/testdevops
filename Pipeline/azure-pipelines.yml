@@ -1,0 +1,23 @@
+variables:
+- group: 'VarGroup'
+- name: 'github-organisation'
+  value: 'silverhack'
+- name: 'github-repository'
+  value: 'azuredevopstest'
+
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+- stage: 'GitPush'
+  jobs:
+    - job: GitPush
+      steps:
+        - checkout: self
+        - script: git push https://${env:githubtoken}@github.com/$(github-organisation)/$(github-repository).git HEAD:refs/heads/main
+          displayName: 'Git push to remote repository'
+          env:
+            githubtoken: $(githubpat)
