@@ -31,7 +31,7 @@ stages:
               #$newOrigin = "https://github.com/silverhack/testdevops.git"
               $newOrigin = "https://x-access-token:"+ $alias + "@" + "github.com/silverhack/testdevops.git"
               # Clone the original repository as a bare mirror
-              $sourceURL = ("https://{0}@dev.azure.com/juangarridocaballero/test/_git/test" -f ${env:token})
+              $sourceURL = ("https://{0}@dev.azure.com/juangarridocaballero/publicmonkey/_git/test" -f ${env:token})
               #git clone --mirror -c http.extraheader="Authorization: Bearer ${env:token}" ${env:source} ${env:dest}
               git clone --mirror $sourceURL ${env:dest}
               # Navigate to the bare clone directory
