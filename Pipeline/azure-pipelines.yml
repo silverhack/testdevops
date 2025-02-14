@@ -26,7 +26,7 @@ stages:
               write-host ${env:source}
               #set GitHub url 
               $alias = ${env:pat}
-              $newOrigin = 'https://' + $alias + '@github.com/silverhack/testdevops.git'
+              $newOrigin = "https://" + $alias + "@github.com/silverhack/testdevops.git"
               # Clone the original repository as a bare mirror
               git clone --mirror -c http.extraheader="Authorization: Bearer ${env:token}" ${env:source} ${env:dest}
               # Navigate to the bare clone directory
