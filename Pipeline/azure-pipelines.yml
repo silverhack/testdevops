@@ -28,8 +28,8 @@ stages:
               $alias = ${env:pat}
               $Bytes = [System.Text.Encoding]::Unicode.GetBytes($alias)
               $EncodedText =[Convert]::ToBase64String($Bytes)
-              #$newOrigin = "https://github.com/silverhack/testdevops.git"
-              $newOrigin = "https://"+ $alias + "@" + "github.com/silverhack/testdevops.git"
+              $newOrigin = "https://github.com/silverhack/testdevops.git"
+              #$newOrigin = "https://"+ $alias + "@" + "github.com/silverhack/testdevops.git"
               # Clone the original repository as a bare mirror
               git clone --mirror -c http.extraheader="Authorization: Bearer ${env:token}" ${env:source} ${env:dest}
               # Navigate to the bare clone directory
@@ -47,8 +47,8 @@ stages:
               #git push secondary --all -f
               git config  --get http.extraHeader
               git config --global --unset http.extraHeader
-              #git -c http.extraheader="Authorization: Basic $EncodedText" push secondary --all -f
-              git push secondary --all -f
+              git -c http.extraheader="Authorization: Basic $EncodedText" push secondary --all -f
+              #git push secondary --all -f
               Write-Output '**Azure Devops repo synced with Github repo**'
           env:
             token: $(System.AccessToken)
