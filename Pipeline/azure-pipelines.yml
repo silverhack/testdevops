@@ -44,6 +44,7 @@ stages:
               git fetch ${env:source}
               Write-Output '*****Git push secondary****'
               #git push secondary --all -f
+              git config --global --unset http.extraHeader
               git -c http.extraheader="Authorization: Basic $EncodedText" push secondary --all -f
               Write-Output '**Azure Devops repo synced with Github repo**'
           env:
