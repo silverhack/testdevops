@@ -35,10 +35,13 @@ stages:
               git remote add --mirror=fetch secondary $newOrigin
               # To update the mirror in the future
               git remote -v
-              write-host "Fetchhhh!!!"
-              git fetch origin
-              write-host "Pushhhhh!!!"
-              git push secondary main -f
+              git pull https://github.com/silverhack/testdevops.git
+              git remote prune ${env:source}
+              Write-Output '*****Git fetch origin****'
+              git fetch ${env:source}
+              Write-Output '*****Git push secondary****'
+              git push secondary --all -f
+              Write-Output '**Azure Devops repo synced with Github repo**'
           env:
             token: $(System.AccessToken)
             pat: $(GitHubPat)
