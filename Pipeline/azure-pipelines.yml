@@ -32,7 +32,7 @@ stages:
               # Navigate to the bare clone directory
               write-host "cloned!!!"
               Set-Location ${env:dest}
-              git config --global credential. Helper "!f() { echo \`"username=.`npassword=`${env:pat}\`"; }; f"
+              #git config --global credential.helper="!f() { echo \`"username=.`npassword=`${env:pat}\`"; }; f"
               # Set your personal GitHub repo as the push destination
               git remote add --mirror=fetch secondary $newOrigin
               # To update the mirror in the future
@@ -42,7 +42,7 @@ stages:
               Write-Output '*****Git fetch origin****'
               git fetch ${env:source}
               Write-Output '*****Git push secondary****'
-              git push secondary --all -f
+              git -c credential.helper='!f() { echo "username=token"; echo "password=${env:pat}"; };f' push secondary --all -f
               Write-Output '**Azure Devops repo synced with Github repo**'
           env:
             token: $(System.AccessToken)
