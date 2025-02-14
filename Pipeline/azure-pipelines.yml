@@ -29,7 +29,7 @@ stages:
               $Bytes = [System.Text.Encoding]::Unicode.GetBytes($alias)
               $EncodedText =[Convert]::ToBase64String($Bytes)
               #$newOrigin = "https://github.com/silverhack/testdevops.git"
-              $newOrigin = "https://x-access-token:"+ $alias + "@" + "github.com/silverhack/testdevops.git"
+              $newOrigin = "https://"+ $alias + "@" + "github.com/silverhack/testdevops.git"
               # Clone the original repository as a bare mirror
               $sourceURL = ("https://{0}@dev.azure.com/juangarridocaballero/publicmonkey/_git/test" -f ${env:token})
               #git clone --mirror -c http.extraheader="Authorization: Bearer ${env:token}" ${env:source} ${env:dest}
