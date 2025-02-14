@@ -26,12 +26,13 @@ stages:
               write-host ${env:source}
               #set GitHub url 
               $alias = ${env:pat}
-              $newOrigin = 'https://' + $alias + '@github.com/silverhack/testdevops.git'
+              $newOrigin = 'https://github.com/silverhack/testdevops.git'
               # Clone the original repository as a bare mirror
               git clone --mirror -c http.extraheader="Authorization: Bearer ${env:token}" ${env:source} ${env:dest}
               # Navigate to the bare clone directory
               write-host "cloned!!!"
               Set-Location ${env:dest}
+              git config --global credential. Helper "!f() { echo \`"username=.`npassword=`${env:pat}\`"; }; f"
               # Set your personal GitHub repo as the push destination
               git remote add --mirror=fetch secondary $newOrigin
               # To update the mirror in the future
