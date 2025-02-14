@@ -25,7 +25,7 @@ stages:
               write-host $(Pipeline.Workspace)
               write-host ${env:source}
               #set GitHub url 
-              $alias = ${env:pat}
+              $alias = "x-access-token:" + ${env:pat}
               $Bytes = [System.Text.Encoding]::Unicode.GetBytes($alias)
               $EncodedText =[Convert]::ToBase64String($Bytes)
               $newOrigin = "https://github.com/silverhack/testdevops.git"
@@ -47,8 +47,9 @@ stages:
               #git push secondary --all -f
               git config  --get http.extraHeader
               git config --global --unset http.extraHeader
-              git -c http.extraheader="Authorization: Basic $EncodedText" push secondary --all -f
-              #git push secondary --all -f
+              git config http.extraheader "Authorization: Basic $EncodedText"
+              #git -c http.extraheader="Authorization: Basic $EncodedText" push secondary --all -f
+              git push secondary --all -f
               Write-Output '**Azure Devops repo synced with Github repo**'
           env:
             token: $(System.AccessToken)
