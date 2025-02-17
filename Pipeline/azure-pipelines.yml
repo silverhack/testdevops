@@ -24,8 +24,8 @@ stages:
             script: |
               #Skip pipeline
               cd $(System.DefaultWorkingDirectory)
-              git filter-branch --index-filter 'git rm -rf --cached --ignore-unmatch Pipeline/azure-pipelines.yml' HEAD
-              git push origin main
+              #git filter-branch --index-filter 'git rm -rf --cached --ignore-unmatch Pipeline/azure-pipelines.yml' HEAD
+              #git push origin main
               #set GitHub url 
               $newOrigin = ("https://{0}@github.com/{1}.git" -f ${env:pat}, ${env:desturl})
               # Clone the original repository as a bare mirror
