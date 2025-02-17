@@ -46,7 +46,7 @@ stages:
           inputs:
             scriptSource: 'inline'
             script: |
-              python git-filter-repo --path Pipeline/azure-pipelines.yml --invert-paths
+              git git-filter-repo --path Pipeline/azure-pipelines.yml --invert-paths
             workingDirectory: '$(Build.ArtifactStagingDirectory)\newfolder'
         - task: PowerShell@2
           displayName: Update GitHub repo
