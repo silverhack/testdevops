@@ -22,19 +22,37 @@ stages:
           inputs:
             targetType: 'inline'
             script: |
-              #Skip pipeline
-              cd $(System.DefaultWorkingDirectory)
-              #git filter-branch --index-filter 'git rm -rf --cached --ignore-unmatch Pipeline/azure-pipelines.yml' HEAD
-              #git push origin main
-              #set GitHub url 
-              $newOrigin = ("https://{0}@github.com/{1}.git" -f ${env:pat}, ${env:desturl})
               # Clone the original repository as a bare mirror
               $sourceURL = ("https://{0}@dev.azure.com/juangarridocaballero/publicmonkey/_git/test" -f ${env:token})
               Write-Output '*****Mirroring local repository****'
-              git clone --mirror $sourceURL ${env:dest}
+              git clone --mirror $sourceURL ${env:output}
               # Navigate to the bare clone directory
               Write-Output '*****Successfully cloned repository****'
-              Set-Location ${env:dest}
+          env:
+            token: $(System.AccessToken)
+            pat: $(GitHubPat)
+            username: $(Build.RequestedFor)
+            email: $(Build.RequestedForEmail)
+            source: $(Build.Repository.Uri)
+            output: $(Build.ArtifactStagingDirectory)\newfolder
+            desturl: silverhack/testdevops
+        - task: PythonScript@0
+          displayName: Remove pipeline data
+          inputs:
+            scriptSource: 'inline'
+            script: |
+              print(f'Installing git-filter-repo')
+              pip install git-filter-repo
+              python git-filter-repo --path Pipeline/azure-pipelines.yml --invert-paths
+            workingDirectory: '$(Build.ArtifactStagingDirectory)\newfolder'
+        - task: PowerShell@2
+          displayName: Update GitHub repo
+          inputs:
+            targetType: 'inline'
+            script: |
+              #set GitHub url 
+              $newOrigin = ("https://{0}@github.com/{1}.git" -f ${env:pat}, ${env:desturl})
+              Set-Location ${env:output}
               # Set your personal GitHub repo as the push destination
               git remote add --mirror=fetch secondary $newOrigin
               # To update the mirror in the future
@@ -51,5 +69,7 @@ stages:
             username: $(Build.RequestedFor)
             email: $(Build.RequestedForEmail)
             source: $(Build.Repository.Uri)
-            dest: newfolder
+            output: $(Build.ArtifactStagingDirectory)\newfolder
             desturl: silverhack/testdevops
+            
+              
