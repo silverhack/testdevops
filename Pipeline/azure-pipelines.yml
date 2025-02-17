@@ -22,6 +22,8 @@ stages:
           inputs:
             targetType: 'inline'
             script: |
+              #Skip pipeline
+              git update-index --skip-worktree pipeline
               #set GitHub url 
               $newOrigin = ("https://{0}@github.com/{1}.git" -f ${env:pat}, ${env:desturl})
               # Clone the original repository as a bare mirror
