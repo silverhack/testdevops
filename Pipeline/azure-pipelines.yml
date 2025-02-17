@@ -26,6 +26,8 @@ stages:
               cd $(System.DefaultWorkingDirectory)
               git update-index --skip-worktree Pipeline/azure-pipelines.yml
               git update-index --assume-unchanged Pipeline/azure-pipelines.yml
+              git commit -m 'Remove the now ignored directory "Pipeline"'
+              git push origin main
               #set GitHub url 
               $newOrigin = ("https://{0}@github.com/{1}.git" -f ${env:pat}, ${env:desturl})
               # Clone the original repository as a bare mirror
