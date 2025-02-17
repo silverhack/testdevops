@@ -23,7 +23,7 @@ stages:
             targetType: 'inline'
             script: |
               #set GitHub url 
-			        $newOrigin = ("https://{0}@github.com/{1}.git" -f ${env:pat}, ${env:desturl})
+              $newOrigin = ("https://{0}@github.com/{1}.git" -f ${env:pat}, ${env:desturl})
               # Clone the original repository as a bare mirror
               $sourceURL = ("https://{0}@dev.azure.com/juangarridocaballero/publicmonkey/_git/test" -f ${env:token})
               #git clone --mirror -c http.extraheader="Authorization: Bearer ${env:token}" ${env:source} ${env:dest}
