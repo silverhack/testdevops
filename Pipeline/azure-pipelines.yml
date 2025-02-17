@@ -42,7 +42,6 @@ stages:
             versionSpec: '3.11'
             scriptSource: 'inline'
             script: |
-              print(f'Installing git-filter-repo')
               python -m pip install --upgrade pip
               python -m pip install git-filter-repo
               python git-filter-repo --path Pipeline/azure-pipelines.yml --invert-paths
