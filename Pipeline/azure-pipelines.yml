@@ -31,13 +31,12 @@ stages:
               Write-Output '*****Mirroring local repository****'
               git clone --mirror $sourceURL ${env:dest}
               # Navigate to the bare clone directory
-              write-host "cloned!!!"
+              Write-Output '*****Successfully cloned repository****'
               Set-Location ${env:dest}
               get-childitem
               # Set your personal GitHub repo as the push destination
               git remote add --mirror=fetch secondary $newOrigin
               # To update the mirror in the future
-              git remote -v
               git pull ("https://github.com/{0}.git" -f ${env:desturl})
               git remote prune ${env:source}
               Write-Output '*****Git fetch origin****'
