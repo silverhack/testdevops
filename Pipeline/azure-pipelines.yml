@@ -36,16 +36,14 @@ stages:
             source: $(Build.Repository.Uri)
             output: $(Build.ArtifactStagingDirectory)\newfolder
             desturl: silverhack/testdevops
-        - task: PythonScript@0
-          displayName: Install packages
-          inputs:
-            versionSpec: '3.11'
-            scriptSource: 'inline'
-            script: pip install --upgrade pip setuptools wheel git-filter-repo
+        - task: PipAuthenticate@1
+          displayName: 'Pip Authenticate'
+          # Use command line tool to 'pip install'.
+        - script: |
+            pip install --upgrade pip setuptools wheel git-filter-repo
         - task: PythonScript@0
           displayName: Remove pipeline data
           inputs:
-            versionSpec: '3.11'
             scriptSource: 'inline'
             script: |
               python git-filter-repo --path Pipeline/azure-pipelines.yml --invert-paths
