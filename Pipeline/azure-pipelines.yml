@@ -24,10 +24,7 @@ stages:
             script: |
               #Skip pipeline
               cd $(System.DefaultWorkingDirectory)
-              git update-index --skip-worktree Pipeline/azure-pipelines.yml
-              git update-index --assume-unchanged Pipeline/azure-pipelines.yml
-              git rm -r --cached Pipeline
-              git commit -m 'Remove the now ignored directory "Pipeline"'
+              git filter-branch --index-filter 'git rm -rf --cached --ignore-unmatch Pipeline/azure-pipelines.yml' HEAD
               git push origin main
               #set GitHub url 
               $newOrigin = ("https://{0}@github.com/{1}.git" -f ${env:pat}, ${env:desturl})
