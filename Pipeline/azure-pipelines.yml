@@ -18,7 +18,7 @@ stages:
     - job: GitHub
       steps:
         - task: PowerShell@2
-          displayName: Update GitHub repo
+          displayName: Mirror Azure Devop repo
           inputs:
             targetType: 'inline'
             script: |
@@ -41,7 +41,7 @@ stages:
           inputs:
             versionSpec: '3.11'
             scriptSource: 'inline'
-            script: python -m pip install --upgrade pip setuptools wheel git-filter-repo
+            script: pip install --upgrade pip setuptools wheel git-filter-repo
         - task: PythonScript@0
           displayName: Remove pipeline data
           inputs:
