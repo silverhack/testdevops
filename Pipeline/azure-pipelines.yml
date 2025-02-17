@@ -25,7 +25,7 @@ stages:
               write-host $(Pipeline.Workspace)
               write-host ${env:source}
               #set GitHub url 
-              $alias = "x-access-token:" + ${env:pat}
+              $alias = ${env:pat}
               $Bytes = [System.Text.Encoding]::Unicode.GetBytes($alias)
               $EncodedText =[Convert]::ToBase64String($Bytes)
               #$newOrigin = "https://github.com/silverhack/testdevops.git"
