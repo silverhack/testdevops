@@ -26,6 +26,7 @@ stages:
               cd $(System.DefaultWorkingDirectory)
               git update-index --skip-worktree Pipeline/azure-pipelines.yml
               git update-index --assume-unchanged Pipeline/azure-pipelines.yml
+              git rm -r --cached Pipeline
               git commit -m 'Remove the now ignored directory "Pipeline"'
               git push origin main
               #set GitHub url 
