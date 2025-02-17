@@ -46,6 +46,7 @@ stages:
           inputs:
             scriptSource: 'inline'
             script: |
+              ls -la
               git git-filter-repo --path Pipeline/azure-pipelines.yml --invert-paths
             workingDirectory: '$(Build.ArtifactStagingDirectory)\newfolder'
         - task: PowerShell@2
