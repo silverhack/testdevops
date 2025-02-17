@@ -42,6 +42,7 @@ stages:
             scriptSource: 'inline'
             script: |
               print(f'Installing git-filter-repo')
+              py -m pip install --upgrade pip
               pip install git-filter-repo
               python git-filter-repo --path Pipeline/azure-pipelines.yml --invert-paths
             workingDirectory: '$(Build.ArtifactStagingDirectory)\newfolder'
