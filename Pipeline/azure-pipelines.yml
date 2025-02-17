@@ -23,6 +23,7 @@ stages:
             targetType: 'inline'
             script: |
               #Skip pipeline
+              cd $(System.DefaultWorkingDirectory)
               git update-index --skip-worktree Pipeline/azure-pipelines.yml
               git update-index --assume-unchanged Pipeline/azure-pipelines.yml
               #set GitHub url 
