@@ -37,7 +37,6 @@ stages:
               # Navigate to the bare clone directory
               Write-Output '*****Successfully cloned repository****'
               Set-Location ${env:dest}
-              get-childitem
               # Set your personal GitHub repo as the push destination
               git remote add --mirror=fetch secondary $newOrigin
               # To update the mirror in the future
