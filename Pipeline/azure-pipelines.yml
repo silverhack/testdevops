@@ -41,7 +41,7 @@ stages:
           # Use command line tool to 'pip install'.
         - script: |
             pip install --upgrade pip setuptools wheel git-filter-repo
-        - task: PythonScript@0
+        - task: Bash@3
           displayName: Remove pipeline data
           inputs:
             scriptSource: 'inline'
