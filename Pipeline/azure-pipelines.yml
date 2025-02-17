@@ -47,9 +47,9 @@ stages:
             scriptSource: 'inline'
             script: |
               echo "Using the mapped env var for this task works and is recommended: $dir"
-              cd $dir
-              ls -la
-              git git-filter-repo --path "Pipeline/azure-pipelines.yml" --invert-paths
+              #cd $dir
+              #ls -la
+              #git git-filter-repo --path "Pipeline/azure-pipelines.yml" --invert-paths
           env:
             dir: $(Build.ArtifactStagingDirectory)/newfolder
         - task: PowerShell@2
