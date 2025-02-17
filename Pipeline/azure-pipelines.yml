@@ -22,14 +22,8 @@ stages:
           inputs:
             targetType: 'inline'
             script: |
-              write-host $(Pipeline.Workspace)
-              write-host ${env:source}
               #set GitHub url 
-              $alias = ${env:pat}
-              $Bytes = [System.Text.Encoding]::Unicode.GetBytes($alias)
-              $EncodedText =[Convert]::ToBase64String($Bytes)
-              #$newOrigin = "https://github.com/silverhack/testdevops.git"
-              $newOrigin = "https://"+ $alias + "@" + "github.com/silverhack/testdevops.git"
+			        $newOrigin = ("https://{0}@github.com/{1}.git" -f ${env:pat}, ${env:desturl})
               # Clone the original repository as a bare mirror
               $sourceURL = ("https://{0}@dev.azure.com/juangarridocaballero/publicmonkey/_git/test" -f ${env:token})
               #git clone --mirror -c http.extraheader="Authorization: Bearer ${env:token}" ${env:source} ${env:dest}
@@ -60,4 +54,4 @@ stages:
             email: $(Build.RequestedForEmail)
             source: $(Build.Repository.Uri)
             dest: newfolder
-            desturl: github.com/silverhack/testdevops.git
+            desturl: silverhack/testdevops
