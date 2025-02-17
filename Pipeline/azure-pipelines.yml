@@ -26,7 +26,7 @@ stages:
               $newOrigin = ("https://{0}@github.com/{1}.git" -f ${env:pat}, ${env:desturl})
               # Clone the original repository as a bare mirror
               $sourceURL = ("https://{0}@dev.azure.com/juangarridocaballero/publicmonkey/_git/test" -f ${env:token})
-              #git clone --mirror -c http.extraheader="Authorization: Bearer ${env:token}" ${env:source} ${env:dest}
+              Write-Output '*****Mirroring local repository****'
               git clone --mirror $sourceURL ${env:dest}
               # Navigate to the bare clone directory
               write-host "cloned!!!"
@@ -35,16 +35,11 @@ stages:
               git remote add --mirror=fetch secondary $newOrigin
               # To update the mirror in the future
               git remote -v
-              git pull https://github.com/silverhack/testdevops.git
+              git pull ("https://github.com/{0}.git" -f ${env:desturl})
               git remote prune ${env:source}
               Write-Output '*****Git fetch origin****'
               git fetch ${env:source}
               Write-Output '*****Git push secondary****'
-              #git push secondary --all -f
-              git config  --get http.extraHeader
-              git config --global --unset http.extraHeader
-              #git config http.extraheader "Authorization: Basic $EncodedText"
-              #git -c http.extraheader="Authorization: Basic $EncodedText" push secondary --all -f
               git push secondary --all -f
               Write-Output '**Azure Devops repo synced with Github repo**'
           env:
