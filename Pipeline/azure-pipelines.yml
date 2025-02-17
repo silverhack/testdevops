@@ -73,7 +73,7 @@ stages:
             username: $(Build.RequestedFor)
             email: $(Build.RequestedForEmail)
             source: $(Build.Repository.Uri)
-            output: $(Build.ArtifactStagingDirectory)\newfolder
+            output: $(Build.ArtifactStagingDirectory)/newfolder
             desturl: silverhack/testdevops
             
               
