@@ -9,7 +9,7 @@ variables:
 - group: 'VarGroup'
 
 pool:
-  vmImage: windows-latest
+  vmImage: 'ubuntu-latest'
 
 stages:
 - stage: GitHub
