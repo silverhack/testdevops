@@ -44,7 +44,7 @@ stages:
         - task: Bash@3
           displayName: Remove pipeline data
           inputs:
-            scriptSource: 'inline'
+            targetType: 'inline'
             script: |
               echo "Using the mapped env var for this task works and is recommended: $dir"
               cd $dir
@@ -52,7 +52,7 @@ stages:
               #cd $dir
               #git git-filter-repo --path "Pipeline/azure-pipelines.yml" --invert-paths
           env:
-            dir: $(Build.ArtifactStagingDirectory)
+            dir: $(Build.ArtifactStagingDirectory)/newfolder
         - task: PowerShell@2
           displayName: Update GitHub repo
           inputs:
