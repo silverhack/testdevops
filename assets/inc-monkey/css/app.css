@@ -144,7 +144,7 @@ html[data-theme='dark'] svg.icon path {
 	fill: #efefef;
 }
 /* Font icon */
-html[data-theme='dark'] .side-nav .bi {
+html[data-theme='dark'] .side-nav .nav-icon {
 	color: #efefef;
 }
 
@@ -253,6 +253,63 @@ body {
     text-align: left;
 }
 
+.text-justify {
+  text-align: justify;
+}
+
+.justify-paragraph {
+  margin: 0;
+  text-indent: 2rem;
+  text-align: justify;
+}
+
+.monkey-finding-info {
+    padding: 0px 0px;
+	background-color: initial;
+	color: var(--monkey-font-color);
+}
+
+.set-width {
+  width: 220px !important;
+}
+
+.id-suffix span.input-group-append{
+	background-color: var(--monkey-background-color);
+    color: var(--monkey-font-color);
+	border: 1px solid #ced4da;
+}
+
+.id-suffix i{
+    color: var(--monkey-font-color);
+}
+
+.margin-right-sm{
+	margin-right: .5rem;
+}
+
+.monkey365-source {
+    display: flex;
+    gap: .4rem;
+    list-style-type: none;
+    margin: 0rem 0 0;
+    overflow: hidden;
+    padding: 0;
+}
+
+.monkey-source-link {
+	color: var(--monkey-font-color);
+    display: block;
+    position: relative;
+	text-decoration: none;
+    -webkit-transition: all .25s ease-in-out;
+    transition: all .25s ease-in-out;
+    font-size: calc(var(--monkey-menu-item-font-size) * .98);
+    padding: calc(var(--monkey-menu-item-padding-y) * .6) calc(var(--monkey-menu-item-padding-x) * 1.5)
+}
+
+.monkey-source-link:hover {
+    opacity: .7
+}
 
 /* END SECTION ROOT */
 
@@ -352,7 +409,7 @@ body {
 }
 
 .input-group .form-control {
-	margin-right: .5rem;
+	/*margin-right: .5rem;*/
     background-color: var(--monkey-background-color);
 	color: var(--monkey-font-color);
 }
@@ -504,6 +561,9 @@ body {
 
 .navbar-right {
     margin-left: auto;
+	/* gap: 1.5rem !important; */
+    list-style-type: none;
+    margin-bottom: 0;
 }
 
 .navbar-adjust {
@@ -650,11 +710,12 @@ label[class=switch]:active:after {
 .avatar {
 	position: relative;
 	display: inline-block;
+	padding: 0.5rem .6rem;
 }
 
 .avatar img {
-	width: 40px;
-	height: 40px;
+	width: 30px;
+	height: 30px;
 }
 
 /* END SECTION NAVBAR */
@@ -716,6 +777,7 @@ label[class=switch]:active:after {
 .side-nav .side-nav-link {
     display: block;
     list-style: none;
+	cursor: pointer;
     position: relative;
     white-space: nowrap;
 	text-decoration: none;

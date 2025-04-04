@@ -58,6 +58,14 @@ $(document).ready(function(){
 	$("dashboard_table").DataTable().responsive.recalc();
 });
 
+//clipboard
+$('.monkey-clipboard').click(function(e) {
+	var bsTarget = $(this).attr('data-bs-target');
+	var buttonId = bsTarget.split("-");
+	if(buttonId){
+		copyToClipboard(buttonId[0]);
+	}
+});
 
 
 //Search filter
@@ -107,28 +115,43 @@ $(".form-control.search-filter").on("input", function()  {
 		})
 	}
 	else{
-		$('#Monkey365Findings').empty()
+		$('#Monkey365Findings').empty();
 		$('#Monkey365GlobalFindings').addClass('d-none');
-		show('monkey-main-dashboard')
+		show('monkey-main-dashboard');
 	}
 });
+
+//clipboard 
+async function copyToClipboard (id) {
+	let result = await navigator.clipboard.writeText(id);
+};
 
 //Change theme
 const toggleTheme = document.getElementById("toggleTheme");
 
 function changeTheme() {
 	if(this.classList.contains('bi-sun')){
+		//trans();
 		//this.classList.toggle("bi-moon");
 		this.className = "bi bi-moon";
 		document.documentElement.setAttribute('data-theme','dark');
 	}
 	else{
+		//trans();
 		this.className = "bi bi-sun";
 		document.documentElement.setAttribute('data-theme','light');
 	}
 }
 
 toggleTheme.addEventListener("click", changeTheme);
+
+
+let trans = () => {
+    document.documentElement.classList.add('transition');
+    window.setTimeout(() => {
+        document.documentElement.classList.remove('transition')
+    }, 1000)
+}
 
 $('.form-control.finding-filter').on("input", function() {
 	var searchVal = $(this).val().toLowerCase();
