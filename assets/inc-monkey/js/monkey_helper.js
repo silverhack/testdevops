@@ -8,6 +8,27 @@ $(document).ready(function(){
 	$('.collapse').on('shown.bs.collapse', function (e) {
 		var table = $(this).find('table');
 		if(table && $(table).attr('id')){
+			//highlight code if any
+			if (typeof hljs !== 'undefined') {
+				var mybuttons = $(table).find('button');
+				if (mybuttons) {
+					for (var i=0; i < mybuttons.length; i++) {
+						if($(mybuttons[i]).attr('title') && $(mybuttons[i]).attr('title')  == "showModal"){
+							var mybuttonId = $(mybuttons[i]).attr('data-bs-target');
+							if(mybuttonId){
+								var myobj = document.getElementById(mybuttonId.substring(1));
+								var codeId = $(myobj).find('code').attr('id');
+								if(codeId){
+									var myobj = document.getElementById(codeId);
+									var obj = JSON.parse(myobj.innerText);
+									myobj.textContent = JSON.stringify(obj, undefined, 4)
+									hljs.highlightElement(myobj);
+								}
+							}
+						}
+					}
+				}
+			}
 			//initialise dataTable
 			var type = $(table).attr('type');
 			var tid = $(table).attr('id');
@@ -18,25 +39,9 @@ $(document).ready(function(){
 				InitDatatableNormal(tid);
 			}
 			if(tid){
+				$(tid).DataTable().columns.adjust();
 				$(tid).DataTable().columns.adjust().draw();
 				$(tid).DataTable().responsive.recalc();
-			}
-			//highlight code if any
-			if (typeof hljs !== 'undefined') {
-				var mybutton = $(table).find('button');
-				if(mybutton && $(mybutton).attr('title') && $(mybutton).attr('title')  == "showModal"){
-					var mybuttonId = $(mybutton).attr('data-bs-target');
-					if(mybuttonId){
-						var myobj = document.getElementById(mybuttonId.substring(1));
-						var codeId = $(myobj).find('code').attr('id');
-						if(codeId){
-							var myobj = document.getElementById(codeId);
-							var obj = JSON.parse(myobj.innerText);
-							myobj.textContent = JSON.stringify(obj, undefined, 4)
-							hljs.highlightElement(myobj);
-						}
-					}
-				}
 			}
 		}
 	});
@@ -55,7 +60,7 @@ $(document).ready(function(){
 	//Init dashboard table
 	InitDatatableNormal("dashboard_table");
 	$("dashboard_table").DataTable().columns.adjust().draw();
-	$("dashboard_table").DataTable().responsive.recalc();
+	//$("dashboard_table").DataTable().responsive.recalc();
 });
 
 //clipboard
@@ -280,6 +285,9 @@ function InitDatatableNormal(ID) {
     }
     var oTable = $("#"+ID).DataTable({
 		responsive: true,
+		"initComplete": function (settings, json) {  
+			$("#"+ID).wrap("<div class='monkey-datatable'></div>");            
+		},
 		layout: {
 			topStart: 'buttons',
 			topEnd: {
