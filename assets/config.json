@@ -7,7 +7,7 @@
 					{
 						"href":"assets/inc-bootstrap/css/bootstrap.min.css",
 						"rel":"stylesheet",
-						"integrity":"sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH",
+						"integrity":"sha384-WOjQpmVkgtoZLE9dIC71doTnZ7IxnvDC4ANjpwyHfvYBuKwd5xBgDwG46a/ctHti",
 						"crossorigin":"anonymous"
 					}
 				]
@@ -29,7 +29,7 @@
 					{
 						"href":"assets/inc-fabric-icons/css/fabric-icons.css",
 						"rel":"stylesheet",
-						"integrity":"sha384-/hOXKyEX5Up+k2//tGPcrUgRQt2Eau5h3rrWP9OrkmEWPOHrGr54ODcTzlXU0kBL",
+						"integrity":"sha384-xXIo1ZHED3MHuog2pHCrxKhiMwn6fHs3MRDt27AzDLnYQ0NOxj2Rzp8AIJeEuoz/",
 						"crossorigin":"anonymous"
 					}
 				]
@@ -40,7 +40,7 @@
 					{
 						"href":"assets/inc-datatables/css/datatables.min.css",
 						"rel":"stylesheet",
-						"integrity":"sha384-swdIzpIp3ENGbzDubzGc1NrVrSrRvfr6GWaeTQ6aOkNMItPZnXiIyCUbh+sTaU5a",
+						"integrity":"sha384-IhT2MEkYdRMNt4hcxS08Ul1Df24OVadMgr4aY7+cXPU8YiOjnTQMXti491OaZAR0",
 						"crossorigin":"anonymous"
 					}
 				]
@@ -83,7 +83,7 @@
 				"properties":[
 					{
 						"src":"assets/inc-datatables/js/datatables.min.js",
-						"integrity":"sha384-iQrz6LSOwWJdnt7o7ymocpYDU8MVoPrZ2d8BvY/0kSKJaOeLN1+NndbDHQpP35vM",
+						"integrity":"sha384-SFiAfE7s0UMYu3noR8l3VCLmYkkYCC96p5uD83jwEQCz+CDMVZVLkSckTwi8enaj",
 						"crossorigin":"anonymous"
 					}
 				]
@@ -115,11 +115,28 @@
 				"properties":[
 					{
 						"href":"assets/inc-monkey/css/app.css",
-						"rel":"stylesheet"
+						"rel":"stylesheet",
+						"integrity":"sha384-FssNHodaM+dmgGfgWxd9Vpa+N82+x13PSlmRc7Pi7FClZ3A+tIt0Nf1eT7cXm8zj",
+						"crossorigin":"anonymous"
+					}
+				]
+			}
+		],
+		"helpers": [
+			{
+				"tagName": "script",
+				"properties":[
+					{
+						"href":"assets/inc-monkey/js/monkey_helper.js",
+						"integrity":"sha384-CM4pMqeyJdw2rgkbBI+Zyv25PwGp+izAY+7MQAzPP8ArFe1soznpnBNz9479JlqR",
+						"crossorigin":"anonymous"
 					}
 				]
 			}
 		]
     },
-	"baseUrl":"https://github.com/silverhack/testdevops"
+	"repository":{
+		"baseUrl":"https://github.com/silverhack/testdevops",
+		"branch":"main"
+	}
 }
