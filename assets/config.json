@@ -29,7 +29,7 @@
 					{
 						"href":"assets/inc-fabric-icons/css/fabric-icons.css",
 						"rel":"stylesheet",
-						"integrity":"sha384-xXIo1ZHED3MHuog2pHCrxKhiMwn6fHs3MRDt27AzDLnYQ0NOxj2Rzp8AIJeEuoz/",
+						"integrity":"sha384-+o7QMRmwnLuCjmltijZ66KnFR/JWS3FObGU1sarWF6OY4hvhXTiJr+05tve6YXhz",
 						"crossorigin":"anonymous"
 					}
 				]
@@ -116,7 +116,7 @@
 					{
 						"href":"assets/inc-monkey/css/app.css",
 						"rel":"stylesheet",
-						"integrity":"sha384-FssNHodaM+dmgGfgWxd9Vpa+N82+x13PSlmRc7Pi7FClZ3A+tIt0Nf1eT7cXm8zj",
+						"integrity":"sha384-+o7QMRmwnLuCjmltijZ66KnFR/JWS3FObGU1sarWF6OY4hvhXTiJr+05tve6YXhz",
 						"crossorigin":"anonymous"
 					}
 				]
@@ -128,7 +128,7 @@
 				"properties":[
 					{
 						"href":"assets/inc-monkey/js/monkey_helper.js",
-						"integrity":"sha384-CM4pMqeyJdw2rgkbBI+Zyv25PwGp+izAY+7MQAzPP8ArFe1soznpnBNz9479JlqR",
+						"integrity":"sha384-o3PSUx9iezLMwr5bttMubRFHHVHt1HYEvNY3Y+6jfBAqb6i9XnnIf8PGG2xQjii7",
 						"crossorigin":"anonymous"
 					}
 				]
