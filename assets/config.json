@@ -7,7 +7,7 @@
 					{
 						"href":"assets/inc-bootstrap/css/bootstrap.min.css",
 						"rel":"stylesheet",
-						"integrity":"sha384-WOjQpmVkgtoZLE9dIC71doTnZ7IxnvDC4ANjpwyHfvYBuKwd5xBgDwG46a/ctHti",
+						"integrity":"sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH",
 						"crossorigin":"anonymous"
 					}
 				]
@@ -40,7 +40,7 @@
 					{
 						"href":"assets/inc-datatables/css/datatables.min.css",
 						"rel":"stylesheet",
-						"integrity":"sha384-IhT2MEkYdRMNt4hcxS08Ul1Df24OVadMgr4aY7+cXPU8YiOjnTQMXti491OaZAR0",
+						"integrity":"sha384-/F3Bo7ZeNleCrEuIV225tNoZWE3PZkctYXfr9sd6ab1LoHrRuR8qF3JPvTyE/a+d",
 						"crossorigin":"anonymous"
 					}
 				]
@@ -83,7 +83,7 @@
 				"properties":[
 					{
 						"src":"assets/inc-datatables/js/datatables.min.js",
-						"integrity":"sha384-SFiAfE7s0UMYu3noR8l3VCLmYkkYCC96p5uD83jwEQCz+CDMVZVLkSckTwi8enaj",
+						"integrity":"sha384-JqCGVRdLOsFc7EVAMnun8cjk+DdhjKD3qT/tfZ+qMBHTD6+oNX3Ot8sb5YdwOjkn",
 						"crossorigin":"anonymous"
 					}
 				]
