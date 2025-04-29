@@ -20,9 +20,14 @@ $(document).ready(function(){
 								var codeId = $(myobj).find('code').attr('id');
 								if(codeId){
 									var myobj = document.getElementById(codeId);
-									var obj = JSON.parse(myobj.innerText);
-									myobj.textContent = JSON.stringify(obj, undefined, 4)
-									hljs.highlightElement(myobj);
+									if (myobj.hasAttribute('data-highlighted')) {
+										//data already highlighted
+									}
+									else{
+										var obj = JSON.parse(myobj.innerText);
+										myobj.textContent = JSON.stringify(obj, undefined, 4)
+										hljs.highlightElement(myobj);
+									}
 								}
 							}
 						}
